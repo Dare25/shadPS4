@@ -162,7 +162,7 @@ jobs:
         path: upload/
 
   macos-sdl:
-    runs-on: macos-15
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
