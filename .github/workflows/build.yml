@@ -101,7 +101,7 @@ jobs:
         path: ${{github.workspace}}/build/shadPS4.exe
 
   windows-qt:
-    runs-on: DESKTOP-EDQRV84
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
