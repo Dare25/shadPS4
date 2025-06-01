@@ -57,7 +57,7 @@ jobs:
         echo "fullhash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
   windows-sdl:
-    runs-on: windows-2025
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
