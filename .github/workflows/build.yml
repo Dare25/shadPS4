@@ -101,7 +101,7 @@ jobs:
         path: ${{github.workspace}}/build/shadPS4.exe
 
   windows-qt:
-    runs-on: windows-2025
+    runs-on: DESKTOP-EDQRV84
     needs: get-info
     steps:
     - uses: actions/checkout@v4
