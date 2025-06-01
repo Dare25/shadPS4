@@ -14,14 +14,14 @@ env:
 
 jobs:
   reuse:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     continue-on-error: true
     steps:
     - uses: actions/checkout@v4
     - uses: fsfe/reuse-action@v5
 
   clang-format:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     continue-on-error: true
     steps:
     - uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
       run: ./.ci/clang-format.sh
       
   get-info:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     outputs:
       date: ${{ steps.vars.outputs.date }}
       shorthash: ${{ steps.vars.outputs.shorthash }}
@@ -213,7 +213,7 @@ jobs:
         path: upload/
 
   macos-qt:
-    runs-on: macos-15
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
@@ -274,7 +274,7 @@ jobs:
         path: shadps4-macos-qt.tar.gz
 
   linux-sdl:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
@@ -335,7 +335,7 @@ jobs:
         path: Shadps4-sdl.AppImage
 
   linux-qt:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
@@ -387,7 +387,7 @@ jobs:
         path: Shadps4-qt.AppImage
 
   linux-sdl-gcc:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
@@ -423,7 +423,7 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}} --parallel $(nproc)
 
   linux-qt-gcc:
-    runs-on: ubuntu-24.04
+    runs-on: self-hosted
     needs: get-info
     steps:
     - uses: actions/checkout@v4
@@ -461,7 +461,7 @@ jobs:
   pre-release:
     if: github.ref == 'refs/heads/main' && github.repository == 'shadps4-emu/shadPS4' && github.event_name == 'push'
     needs: [get-info, windows-sdl, windows-qt, macos-sdl, macos-qt, linux-sdl, linux-qt]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Download all artifacts
       uses: actions/download-artifact@v4
